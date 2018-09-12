@@ -1,12 +1,13 @@
 package Command;
 
 import Util.CloseUtil;
+import Util.TextUtil;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class CharCommand implements Command {
+public class LineCommand implements Command {
 
     @Override
     public void execute(String filePath) {
@@ -14,15 +15,21 @@ public class CharCommand implements Command {
         try {
             FileReader fileReader = new FileReader(filePath);
             BufferedReader bf = new BufferedReader(fileReader);
-            String line;//E:\Eclipse\workspace\WordCount\src\WordCount.java
-
-            while ((line = bf.readLine()) != null) {
-                count += line.length();
+            //-l E:\Eclipse\workspace\WordCount\src\test.txt
+            String line ;
+            while ((line=bf.readLine())!=null) {
+                if (!TextUtil.isEmpty(line)){
+                    count++;
+                }
             }
             CloseUtil.closeQuietly(bf, fileReader);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("字符数 = [" + count + "]");
+        System.out.println("行数 = [" + count + "]");
     }
 }
+
+
+
+
