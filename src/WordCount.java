@@ -1,5 +1,5 @@
 import Command.*;
-import Constant.CommandHead;
+import Constant.CommandType;
 import Util.ListUtil;
 import Util.TextUtil;
 
@@ -37,7 +37,7 @@ public class WordCount {
             return;
         }
 
-        if (sArgs.contains(CommandHead.SEARCH_COUNT)) {
+        if (sArgs.contains(CommandType.SEARCH_COUNT)) {
             executeWithDir(lastInput);
         } else {
             executeWithFile(lastInput);
@@ -57,19 +57,19 @@ public class WordCount {
         boolean isCorrect = true;
         for (int i = 0; i < str.length; i++) {
             args = str[i];
-            if (args.equals(CommandHead.CHAR_COUNT) && !sArgs.contains(args)) {
+            if (args.equals(CommandType.CHAR_COUNT) && !sArgs.contains(args)) {
                 sCommandList.add(new CharCommand());
                 sArgs.add(args);
-            } else if (args.equals(CommandHead.WORD_COUNT) && !sArgs.contains(args)) {
+            } else if (args.equals(CommandType.WORD_COUNT) && !sArgs.contains(args)) {
                 sCommandList.add(new WordCommand());
                 sArgs.add(args);
-            } else if (args.equals(CommandHead.LINE_COUNT) && !sArgs.contains(args)) {
+            } else if (args.equals(CommandType.LINE_COUNT) && !sArgs.contains(args)) {
                 sCommandList.add(new LineCommand());
                 sArgs.add(args);
-            } else if (args.equals(CommandHead.ALL_COUNT) && !sArgs.contains(args)) {
+            } else if (args.equals(CommandType.ALL_COUNT) && !sArgs.contains(args)) {
                 sCommandList.add(new AllCommand());
                 sArgs.add(args);
-            } else if (args.equals(CommandHead.SEARCH_COUNT) && !sArgs.contains(args)) {
+            } else if (args.equals(CommandType.SEARCH_COUNT) && !sArgs.contains(args)) {
                 sArgs.add(args);
             } else if (i == str.length - 1) {
                 isCorrect = checkFile(args);
@@ -92,7 +92,7 @@ public class WordCount {
      */
     private static boolean checkFile(String args) {
 
-        if (sArgs.contains(CommandHead.SEARCH_COUNT)) {
+        if (sArgs.contains(CommandType.SEARCH_COUNT)) {
             return checkCommandDir(args);
         } else {
             return checkCommandFile(args);

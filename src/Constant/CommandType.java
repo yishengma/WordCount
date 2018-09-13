@@ -1,6 +1,6 @@
 package Constant;
 
-public final class CommandHead {
+public final class CommandType {
 
     public static final String CHAR_COUNT = "-c";
     public static final String WORD_COUNT = "-w";
