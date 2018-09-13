@@ -5,11 +5,13 @@ import Util.CloseUtil;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 public class CharCommand implements Command {
 
     @Override
-    public void execute(String filePath) {
+    public ArrayList<String> execute(String filePath) {
         int count = 0;
         try {
             FileReader fileReader = new FileReader(filePath);
@@ -24,5 +26,6 @@ public class CharCommand implements Command {
             e.printStackTrace();
         }
         System.out.println("字符数 = [" + count + "]");
+        return null;
     }
 }

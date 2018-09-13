@@ -1,6 +1,9 @@
 package Command;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface Command {
 
-    void execute(String filePath);
+    ArrayList<String> execute(String filePath);
 }
